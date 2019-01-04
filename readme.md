@@ -9,4 +9,25 @@ This is the main window, where you select the language. The languages are picked
 This is the Flash Card view, where it either randomly shows flash cards and you have to guess the answers by selecting right option. 
 <br><br>
 
-This is a draft application - Any questions, let me know!
+# This is great! How do I run this?
+
+### Step 1:
+You need a Microsoft Windows Operating System with Microsoft .Net installed to run this application. <br>
+I'd recommend you download the files and try to run it first.
+
+### Step 2: 
+Copy the following files [from here](https://github.com/skalavala/FlashCards/tree/master/Output)
+
+* FlashCards.exe (This is the actual program)
+* FlashCards.exe.config (settings file that tells where the data file is)
+* japanese.json (The data!)
+
+### Step 2: 
+Once you downloaded the files, double click on the FashCards.exe file to run.<br>
+
+Feel free to add languages/data to your heart's content, and simply restart the program.<br><br>
+
+If you have questions, feel free to [contact me](https://github.com/skalavala/FlashCards/issues/new)
+
+<br><br>
+Enjoy!

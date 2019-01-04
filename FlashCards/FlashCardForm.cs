@@ -26,21 +26,20 @@ namespace FlashCards
         private int _currentQuestionIndex = 0;
 
         private DateTime _startTime;
-        private TopicJsonData _topicData;
+        private TopicJsonData _data;
 
         private Dictionary<string, string> _flashCards = new Dictionary<string, string>(32);
 
-        public FlashCardForm(string lang, bool surpriseMode)
+        public FlashCardForm(TopicJsonData data, string topic, bool random)
         {
             InitializeComponent();
             _totalTime = new System.Timers.Timer(1000);
 
-            this._topic = lang;
-            this._randomMode = surpriseMode;
-            string path = ConfigurationManager.AppSettings["topicFilePath"];
-            _topicData = Data.LoadFile(path);
+            this._topic = topic;
+            this._randomMode = random;
+            this._data = data;
 
-            foreach(Topic t in _topicData.topics)
+            foreach(Topic t in _data.topics)
             {
                 if (t.name == this._topic)
                 {

@@ -13,6 +13,9 @@ namespace FlashCards
 {
     public partial class MainForm : Form
     {
+        private string _dataFilePath;
+        private TopicJsonData _data;
+
         public MainForm()
         {
             InitializeComponent();
@@ -20,19 +23,13 @@ namespace FlashCards
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string path = ConfigurationManager.AppSettings["topicFilePath"];
-            if ( null == path)
-            {
-                string msg = "The data file is required to run this application. Please make sure the file path is specified correctly in the FlashCards.exe.config file.";
-                MessageBox.Show(msg, "Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Close();
+            if (!VerifyDataFile())
                 return;
-            }
 
-            TopicJsonData jap = Data.LoadFile(path);
+            _data = Data.LoadFile(_dataFilePath);
             lstTopics.Items.Clear();
 
-            foreach (Topic l in jap.topics)
+            foreach (Topic l in _data.topics)
             {
                 ListViewItem lvi = new ListViewItem();
                 lvi.Text = l.name;
@@ -41,6 +38,26 @@ namespace FlashCards
                 lstTopics.Items.Add(lvi);
             }
             btnOpenFlashCards.Visible = false;
+        }
+
+        private bool VerifyDataFile()
+        {
+            _dataFilePath = ConfigurationManager.AppSettings["topicFilePath"];
+            if (null == _dataFilePath)
+            {
+                string msg = "The data file is required to run this application. Please make sure the file path is specified correctly in the FlashCards.exe.config file.";
+                MessageBox.Show(msg, "Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return false;
+            }
+
+            if (!System.IO.File.Exists(_dataFilePath))
+            {
+                MessageBox.Show("File '" + _dataFilePath + "' does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+    
+            return true;
         }
 
         private void lstTopics_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,7 +81,7 @@ namespace FlashCards
                 return;
 
             this.Visible = false;
-            FlashCardForm frm = new FlashCardForm(lstTopics.SelectedItems[0].Text, chkRandom.Checked);
+            FlashCardForm frm = new FlashCardForm(_data, lstTopics.SelectedItems[0].Text, chkRandom.Checked);
             frm.ShowDialog();
             this.Visible = true;
         }

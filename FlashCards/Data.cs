@@ -15,7 +15,7 @@ namespace FlashCards
         public Dictionary<string, string> data;
     }
 
-    class TopicJsonData
+    public class TopicJsonData
     {
         public List<Topic> topics;
     }

@@ -7,6 +7,6 @@ This is the main window, where you select the language. The languages are picked
 <br>
 <img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/flashcard.png" />
 This is the Flash Card view, where it either randomly shows flash cards and you have to guess the answers by selecting right option. 
-<br>
+<br><br>
 
 This is a draft application - Any questions, let me know!

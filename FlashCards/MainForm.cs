@@ -21,6 +21,14 @@ namespace FlashCards
         private void MainForm_Load(object sender, EventArgs e)
         {
             string path = ConfigurationManager.AppSettings["topicFilePath"];
+            if ( null == path)
+            {
+                string msg = "The data file is required to run this application. Please make sure the file path is specified correctly in the FlashCards.exe.config file.";
+                MessageBox.Show(msg, "Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+                return;
+            }
+
             TopicJsonData jap = Data.LoadFile(path);
             lstTopics.Items.Clear();
 

@@ -103,4 +103,16 @@
     <None Include="Resources\Icon1.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>del $(SolutionDir)\Output\*.exe
+del $(SolutionDir)\Output\*.exe.config
+del $(SolutionDir)\Output\*.json
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\
+copy $(TargetPath).config $(SolutionDir)Output\
+copy $(SolutionDir)\data\*.json $(SolutionDir)Output\
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>

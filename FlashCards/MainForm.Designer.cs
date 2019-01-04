@@ -33,9 +33,10 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.items = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnOpenFlashCards = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkRandom = new System.Windows.Forms.CheckBox();
-            this.groupBox1.SuspendLayout();
+            this.btnEditTopic = new System.Windows.Forms.Button();
+            this.btnAddTopic = new System.Windows.Forms.Button();
+            this.btnDeleteTopic = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstTopics
@@ -45,10 +46,10 @@
             this.items});
             this.lstTopics.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.lstTopics.FullRowSelect = true;
-            this.lstTopics.Location = new System.Drawing.Point(12, 19);
+            this.lstTopics.Location = new System.Drawing.Point(12, 12);
             this.lstTopics.MultiSelect = false;
             this.lstTopics.Name = "lstTopics";
-            this.lstTopics.Size = new System.Drawing.Size(668, 229);
+            this.lstTopics.Size = new System.Drawing.Size(682, 339);
             this.lstTopics.TabIndex = 0;
             this.lstTopics.UseCompatibleStateImageBehavior = false;
             this.lstTopics.View = System.Windows.Forms.View.Details;
@@ -62,49 +63,80 @@
             // 
             // items
             // 
-            this.items.Text = "Number of Items";
+            this.items.Text = "Number of Cards";
             this.items.Width = 300;
             // 
             // btnOpenFlashCards
             // 
             this.btnOpenFlashCards.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOpenFlashCards.BackgroundImage")));
             this.btnOpenFlashCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnOpenFlashCards.Location = new System.Drawing.Point(555, 268);
+            this.btnOpenFlashCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenFlashCards.Location = new System.Drawing.Point(470, 368);
             this.btnOpenFlashCards.Name = "btnOpenFlashCards";
-            this.btnOpenFlashCards.Size = new System.Drawing.Size(125, 65);
+            this.btnOpenFlashCards.Size = new System.Drawing.Size(224, 53);
             this.btnOpenFlashCards.TabIndex = 1;
+            this.btnOpenFlashCards.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpenFlashCards.UseVisualStyleBackColor = true;
             this.btnOpenFlashCards.Click += new System.EventHandler(this.btnOpenFlashCards_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.chkRandom);
-            this.groupBox1.Controls.Add(this.lstTopics);
-            this.groupBox1.Controls.Add(this.btnOpenFlashCards);
-            this.groupBox1.Location = new System.Drawing.Point(13, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(680, 339);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Flash Cards Collection";
             // 
             // chkRandom
             // 
             this.chkRandom.AutoSize = true;
             this.chkRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRandom.Location = new System.Drawing.Point(12, 283);
+            this.chkRandom.Location = new System.Drawing.Point(12, 436);
             this.chkRandom.Name = "chkRandom";
             this.chkRandom.Size = new System.Drawing.Size(298, 30);
             this.chkRandom.TabIndex = 5;
             this.chkRandom.Text = "Show Random Flash Cards";
             this.chkRandom.UseVisualStyleBackColor = true;
             // 
+            // btnEditTopic
+            // 
+            this.btnEditTopic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEditTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditTopic.Location = new System.Drawing.Point(314, 368);
+            this.btnEditTopic.Name = "btnEditTopic";
+            this.btnEditTopic.Size = new System.Drawing.Size(136, 53);
+            this.btnEditTopic.TabIndex = 6;
+            this.btnEditTopic.Text = "Edit Topic";
+            this.btnEditTopic.UseVisualStyleBackColor = true;
+            this.btnEditTopic.Click += new System.EventHandler(this.btnEditTopic_Click);
+            // 
+            // btnAddTopic
+            // 
+            this.btnAddTopic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTopic.Location = new System.Drawing.Point(12, 368);
+            this.btnAddTopic.Name = "btnAddTopic";
+            this.btnAddTopic.Size = new System.Drawing.Size(136, 53);
+            this.btnAddTopic.TabIndex = 7;
+            this.btnAddTopic.Text = "Add Topic";
+            this.btnAddTopic.UseVisualStyleBackColor = true;
+            this.btnAddTopic.Click += new System.EventHandler(this.btnAddTopic_Click);
+            // 
+            // btnDeleteTopic
+            // 
+            this.btnDeleteTopic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDeleteTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTopic.Location = new System.Drawing.Point(163, 368);
+            this.btnDeleteTopic.Name = "btnDeleteTopic";
+            this.btnDeleteTopic.Size = new System.Drawing.Size(136, 53);
+            this.btnDeleteTopic.TabIndex = 8;
+            this.btnDeleteTopic.Text = "Delete Topic";
+            this.btnDeleteTopic.UseVisualStyleBackColor = true;
+            this.btnDeleteTopic.Click += new System.EventHandler(this.btnDeleteTopic_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 378);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(711, 478);
+            this.Controls.Add(this.btnDeleteTopic);
+            this.Controls.Add(this.chkRandom);
+            this.Controls.Add(this.btnOpenFlashCards);
+            this.Controls.Add(this.btnAddTopic);
+            this.Controls.Add(this.lstTopics);
+            this.Controls.Add(this.btnEditTopic);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -112,9 +144,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flash Cards - Make learning easy!";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -122,10 +153,12 @@
 
         private System.Windows.Forms.ListView lstTopics;
         private System.Windows.Forms.Button btnOpenFlashCards;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader items;
         private System.Windows.Forms.CheckBox chkRandom;
+        private System.Windows.Forms.Button btnEditTopic;
+        private System.Windows.Forms.Button btnDeleteTopic;
+        private System.Windows.Forms.Button btnAddTopic;
     }
 }
 

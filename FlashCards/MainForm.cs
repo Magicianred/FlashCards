@@ -23,6 +23,11 @@ namespace FlashCards
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Start();
+        }
+
+        private void Start()
+        {
             if (!VerifyDataFile())
                 return;
 
@@ -37,7 +42,10 @@ namespace FlashCards
                 lvi.Tag = l.name;
                 lstTopics.Items.Add(lvi);
             }
-            btnOpenFlashCards.Visible = false;
+
+            btnOpenFlashCards.Visible = lstTopics.SelectedItems.Count > 0;
+            btnEditTopic.Visible = lstTopics.SelectedItems.Count > 0;
+            btnDeleteTopic.Visible = lstTopics.SelectedItems.Count > 0;
         }
 
         private bool VerifyDataFile()
@@ -63,6 +71,8 @@ namespace FlashCards
         private void lstTopics_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnOpenFlashCards.Visible = lstTopics.SelectedItems.Count > 0;
+            btnEditTopic.Visible = lstTopics.SelectedItems.Count > 0;
+            btnDeleteTopic.Visible = lstTopics.SelectedItems.Count > 0;
         }
 
         private void btnOpenFlashCards_Click(object sender, EventArgs e)
@@ -84,6 +94,30 @@ namespace FlashCards
             FlashCardForm frm = new FlashCardForm(_data, lstTopics.SelectedItems[0].Text, chkRandom.Checked);
             frm.ShowDialog();
             this.Visible = true;
+        }
+
+        private void btnAddTopic_Click(object sender, EventArgs e)
+        {
+            TopicForm topic = new TopicForm(string.Empty, null, Common.FormMode.Add);
+            if ( DialogResult.OK == topic.ShowDialog())
+            {
+                Start();
+            }
+        }
+
+        private void btnEditTopic_Click(object sender, EventArgs e)
+        {
+            string topicName = lstTopics.SelectedItems[0].Text;
+            TopicForm topic = new TopicForm(topicName, _data, Common.FormMode.Edit);
+            if (DialogResult.OK == topic.ShowDialog())
+            {
+                Start();
+            }
+        }
+
+        private void btnDeleteTopic_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

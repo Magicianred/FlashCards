@@ -1,4 +1,4 @@
-# Generic FlashCard Application
+# FlashCards for easy and fast learning!
 
 This is a WindowsForms application that loads data from a json file, and uses that data as flash cards. It is a basic Flash Card application used to memorize any information - including languages, alphabets, sentences, formulas, and more!
 

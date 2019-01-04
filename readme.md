@@ -20,12 +20,14 @@ Copy the following files [from here](https://github.com/skalavala/FlashCards/tre
 
 * FlashCards.exe (This is the actual program)
 * FlashCards.exe.config (settings file that tells where the data file is)
-* japanese.json (The data!)
+* data.json (The data!)
 
 ### Step 2: 
 Once you downloaded the files, double click on the FashCards.exe file to run.<br>
 
-Feel free to add languages/data to your heart's content, and simply restart the program.<br><br>
+Feel free to edit `data.json` using your favorite editor, and add/modify content. When you are done, simply restart the program!<br>
+When you modify the file, make sure there are no issues with the format of the document. To verify, paste the contents of JSON at [jsonlit.com](https://www.jsonlint.com) and verify it is a valid JSONfile.
+<br><br>
 
 If you have questions, feel free to [contact me](https://github.com/skalavala/FlashCards/issues/new)
 

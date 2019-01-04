@@ -4,8 +4,6 @@ c:\kalavala\FlashCards\FlashCards\bin\Release\FlashCards.pdb
 c:\kalavala\FlashCards\FlashCards\bin\Release\Newtonsoft.Json.dll
 c:\kalavala\FlashCards\FlashCards\bin\Release\Newtonsoft.Json.pdb
 c:\kalavala\FlashCards\FlashCards\bin\Release\Newtonsoft.Json.xml
-c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.HintForm.resources
-c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.FlashForm.resources
 c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.MainForm.resources
 c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.Properties.Resources.resources
 c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.csproj.GenerateResource.cache
@@ -14,3 +12,4 @@ c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.csproj.CopyComplete
 c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.exe
 c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.pdb
 c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.csprojAssemblyReference.cache
+c:\kalavala\FlashCards\FlashCards\obj\Release\FlashCards.FlashCardForm.resources

@@ -1,3 +1,5 @@
 .vs
-/packages
-/packages/*
+./packages
+./packages/*
+./FlashCards/bin
+./FlashCards/obj

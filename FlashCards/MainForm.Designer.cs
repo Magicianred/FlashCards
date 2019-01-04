@@ -29,41 +29,41 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.lstLanguages = new System.Windows.Forms.ListView();
+            this.lstTopics = new System.Windows.Forms.ListView();
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.alphabets = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.items = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnOpenFlashCards = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkRandom = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lstLanguages
+            // lstTopics
             // 
-            this.lstLanguages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstTopics.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.name,
-            this.alphabets});
-            this.lstLanguages.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.lstLanguages.FullRowSelect = true;
-            this.lstLanguages.Location = new System.Drawing.Point(12, 19);
-            this.lstLanguages.MultiSelect = false;
-            this.lstLanguages.Name = "lstLanguages";
-            this.lstLanguages.Size = new System.Drawing.Size(668, 229);
-            this.lstLanguages.TabIndex = 0;
-            this.lstLanguages.UseCompatibleStateImageBehavior = false;
-            this.lstLanguages.View = System.Windows.Forms.View.Details;
-            this.lstLanguages.SelectedIndexChanged += new System.EventHandler(this.lstLanguages_SelectedIndexChanged);
-            this.lstLanguages.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstLanguages_MouseDoubleClick);
+            this.items});
+            this.lstTopics.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lstTopics.FullRowSelect = true;
+            this.lstTopics.Location = new System.Drawing.Point(12, 19);
+            this.lstTopics.MultiSelect = false;
+            this.lstTopics.Name = "lstTopics";
+            this.lstTopics.Size = new System.Drawing.Size(668, 229);
+            this.lstTopics.TabIndex = 0;
+            this.lstTopics.UseCompatibleStateImageBehavior = false;
+            this.lstTopics.View = System.Windows.Forms.View.Details;
+            this.lstTopics.SelectedIndexChanged += new System.EventHandler(this.lstTopics_SelectedIndexChanged);
+            this.lstTopics.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstTopics_MouseDoubleClick);
             // 
             // name
             // 
-            this.name.Text = "Language";
+            this.name.Text = "Topic";
             this.name.Width = 340;
             // 
-            // alphabets
+            // items
             // 
-            this.alphabets.Text = "Number of Alphabets";
-            this.alphabets.Width = 300;
+            this.items.Text = "Number of Items";
+            this.items.Width = 300;
             // 
             // btnOpenFlashCards
             // 
@@ -79,7 +79,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkRandom);
-            this.groupBox1.Controls.Add(this.lstLanguages);
+            this.groupBox1.Controls.Add(this.lstTopics);
             this.groupBox1.Controls.Add(this.btnOpenFlashCards);
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Name = "groupBox1";
@@ -94,9 +94,9 @@
             this.chkRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkRandom.Location = new System.Drawing.Point(12, 283);
             this.chkRandom.Name = "chkRandom";
-            this.chkRandom.Size = new System.Drawing.Size(154, 30);
+            this.chkRandom.Size = new System.Drawing.Size(298, 30);
             this.chkRandom.TabIndex = 5;
-            this.chkRandom.Text = "Surprise Me!";
+            this.chkRandom.Text = "Show Random Flash Cards";
             this.chkRandom.UseVisualStyleBackColor = true;
             // 
             // MainForm
@@ -110,7 +110,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Flash Cards Application";
+            this.Text = "Flash Cards - Make learning easy!";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -120,11 +120,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView lstLanguages;
+        private System.Windows.Forms.ListView lstTopics;
         private System.Windows.Forms.Button btnOpenFlashCards;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ColumnHeader name;
-        private System.Windows.Forms.ColumnHeader alphabets;
+        private System.Windows.Forms.ColumnHeader items;
         private System.Windows.Forms.CheckBox chkRandom;
     }
 }

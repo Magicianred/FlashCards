@@ -20,24 +20,24 @@ namespace FlashCards
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string path = ConfigurationManager.AppSettings["languageFilePath"];
-            LanguageJsonData jap = Data.LoadFile(path);
-            lstLanguages.Items.Clear();
+            string path = ConfigurationManager.AppSettings["topicFilePath"];
+            TopicJsonData jap = Data.LoadFile(path);
+            lstTopics.Items.Clear();
 
-            foreach ( Language l in jap.languages)
+            foreach (Topic l in jap.topics)
             {
                 ListViewItem lvi = new ListViewItem();
                 lvi.Text = l.name;
-                lvi.SubItems.Add(l.alphabets.Count.ToString());
+                lvi.SubItems.Add(l.data.Count.ToString());
                 lvi.Tag = l.name;
-                lstLanguages.Items.Add(lvi);
+                lstTopics.Items.Add(lvi);
             }
             btnOpenFlashCards.Visible = false;
         }
 
-        private void lstLanguages_SelectedIndexChanged(object sender, EventArgs e)
+        private void lstTopics_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnOpenFlashCards.Visible = lstLanguages.SelectedItems.Count > 0;
+            btnOpenFlashCards.Visible = lstTopics.SelectedItems.Count > 0;
         }
 
         private void btnOpenFlashCards_Click(object sender, EventArgs e)
@@ -45,18 +45,18 @@ namespace FlashCards
             ShowFlashCardDialog();
         }
 
-        private void lstLanguages_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void lstTopics_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ShowFlashCardDialog();
         }
 
         private void ShowFlashCardDialog()
         {
-            if (lstLanguages.SelectedItems.Count == 0)
+            if (lstTopics.SelectedItems.Count == 0)
                 return;
 
             this.Visible = false;
-            FlashForm frm = new FlashForm(lstLanguages.SelectedItems[0].Text, chkRandom.Checked);
+            FlashCardForm frm = new FlashCardForm(lstTopics.SelectedItems[0].Text, chkRandom.Checked);
             frm.ShowDialog();
             this.Visible = true;
         }

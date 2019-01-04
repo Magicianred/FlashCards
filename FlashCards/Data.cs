@@ -8,24 +8,25 @@ using System.Threading.Tasks;
 
 namespace FlashCards
 {
-    public class Language
+    public class Topic
     {
         public string name;
-        public Dictionary<string, string> alphabets;
+        public string url;
+        public Dictionary<string, string> data;
     }
 
-    class LanguageJsonData
+    class TopicJsonData
     {
-        public List<Language> languages;
+        public List<Topic> topics;
     }
 
     class Data
     {
-        public static LanguageJsonData LoadFile(string filePath)
+        public static TopicJsonData LoadFile(string filePath)
         {
             if (!File.Exists(filePath)) return null;
             string json = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<LanguageJsonData>(json);
+            return JsonConvert.DeserializeObject<TopicJsonData>(json);
         }
     }
 }

@@ -1,4 +1,4 @@
-# `FlashCards` for easy and fast learning!
+# FlashCards for easy and fast learning!
 
 Looking for a digital `FlashCards` that you can run on your computer to learn and memorize stuff? You've come to the right place! Use this `FlashCards` app to memorize any information - including foreign alphabets, words, sentences, mathematical and scientific formulas, and more!
 <p align="center"><img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/main_window.png"/></p>

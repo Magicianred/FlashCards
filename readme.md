@@ -25,11 +25,10 @@ Copy the following files [from here](https://github.com/skalavala/FlashCards/tre
 ### Step 2: 
 Once you downloaded the files, double click on the FashCards.exe file to run.<br>
 
-Feel free to edit `data.json` using your favorite editor, and add/modify content. When you are done, simply restart the program!<br>
-When you modify the file, make sure there are no issues with the format of the document. To verify, paste the contents of JSON at [jsonlit.com](https://www.jsonlint.com) and verify it is a valid JSONfile.
+Feel free to edit `data.json` using your favorite editor, and add/modify content. When you are done, simply restart the program. When you modify the file, make sure there are no issues with the format of the document. To verify, paste the contents of JSON at [https://jsonlint.com/](https://jsonlint.com/) and verify it is a valid JSON file.
 <br><br>
 
 If you have questions, feel free to [contact me](https://github.com/skalavala/FlashCards/issues/new)
 
-<br><br>
+<br>
 Enjoy!

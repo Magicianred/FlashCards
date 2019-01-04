@@ -1,0 +1,15 @@
+c:\kalavala\FlashCards\FlashCards\bin\Debug\FlashCards.exe.config
+c:\kalavala\FlashCards\FlashCards\bin\Debug\FlashCards.exe
+c:\kalavala\FlashCards\FlashCards\bin\Debug\FlashCards.pdb
+c:\kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.MainForm.resources
+c:\kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.Properties.Resources.resources
+c:\kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.csproj.GenerateResource.cache
+c:\kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.csproj.CoreCompileInputs.cache
+c:\kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.exe
+c:\kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.pdb
+c:\kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.FlashForm.resources
+c:\Kalavala\FlashCards\FlashCards\bin\Debug\Newtonsoft.Json.dll
+c:\Kalavala\FlashCards\FlashCards\bin\Debug\Newtonsoft.Json.pdb
+c:\Kalavala\FlashCards\FlashCards\bin\Debug\Newtonsoft.Json.xml
+c:\Kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.csproj.CopyComplete
+c:\Kalavala\FlashCards\FlashCards\obj\Debug\FlashCards.HintForm.resources

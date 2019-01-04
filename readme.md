@@ -12,23 +12,22 @@ This is the Flash Card view, where it either randomly shows flash cards and you 
 # This is great! How do I run this?
 
 ### Step 1:
-You need a Microsoft Windows Operating System with Microsoft .Net installed to run this application. <br>
-I'd recommend you download the files and try to run it first.
+You need a Microsoft Windows Operating System with Microsoft .Net installed to run this application. <br> I'd recommend you download the files and try to run it first.
 
 ### Step 2: 
 Copy the following files [from here](https://github.com/skalavala/FlashCards/tree/master/Output)
 
-* FlashCards.exe (This is the actual program)
-* FlashCards.exe.config (settings file that tells where the data file is)
-* data.json (The data!)
+* FlashCards.exe (The main program that you run on your computer)
+* FlashCards.exe.config (A settings file that tells the program where to look for the data file)
+* data.json (This is the actual data file. You can add/edit the contents, make sure you have a backup first!)
 
-### Step 2: 
+### Step 3: 
 Once you downloaded the files, double click on the FashCards.exe file to run.<br>
 
-Feel free to edit `data.json` using your favorite editor, and add/modify content. When you are done, simply restart the program. When you modify the file, make sure there are no issues with the format of the document. To verify, paste the contents of JSON at [https://jsonlint.com/](https://jsonlint.com/) and verify it is a valid JSON file.
+Feel free to edit `data.json` using your favorite editor, and add/modify content. When you are done, simply restart the program. When you modify the file, make sure there are no issues with the format of the document. To verify, paste the contents of JSON at [https://jsonlint.com/](https://jsonlint.com/) and verify that it is a valid JSON file.
 <br><br>
 
 If you have questions, feel free to [contact me](https://github.com/skalavala/FlashCards/issues/new)
 
 <br>
-Enjoy!
+Enjoy

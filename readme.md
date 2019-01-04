@@ -1,10 +1,10 @@
 # `FlashCards` for easy and fast learning!
 
 Looking for a digital `FlashCards` that you can run on your computer to learn and memorize stuff? You've come to the right place! Use this `FlashCards` app to memorize any information - including foreign alphabets, words, sentences, mathematical and scientific formulas, and more!
-<center><img align="center" src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/main_window.png"/></center>
+<p align="center"><img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/main_window.png"/></p>
 This is the main window, where you select the language. The languages are picked up from the json file under data folder.
 <br>
-<center><img align="center" src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/flashcard.png" /></center>
+<p align="center"><img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/flashcard.png" /></p>
 This is the `FlashCard` view, where it either randomly shows flash cards or sequentially. You can then guess the answers by selecting right option. It keeps track of how many you got right and how many you got wrong, and how long it took for you to finish it. What are you waiting for? Download the application and start learning new stuff!
 <br><br>
 

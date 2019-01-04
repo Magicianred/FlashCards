@@ -1,6 +1,8 @@
 # FlashCards for easy and fast learning!
 
-This is a WindowsForms application that loads data from a json file, and uses that data as flash cards. It is a basic Flash Card application used to memorize any information - including languages, alphabets, sentences, formulas, and more!
+Looking for a digital FlashCards that you can run on your computer to learn and memorize stuff? You'ce come to the right place!
+
+Use this FlashCards app to memorize any information - including foreign alphabets, words, sentences, mathematical and scientific formulas, and more!
 
 <img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/main_window.png"/>
 This is the main window, where you select the language. The languages are picked up from the json file under data folder.

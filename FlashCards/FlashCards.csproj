@@ -105,12 +105,14 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>del $(SolutionDir)\Output\*.exe
+del $(SolutionDir)\Output\*.dll
 del $(SolutionDir)\Output\*.exe.config
 del $(SolutionDir)\Output\*.json
 </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\
+copy $(TargetDir)*.dll $(SolutionDir)Output\
 copy $(TargetPath).config $(SolutionDir)Output\
 copy $(SolutionDir)\data\*.json $(SolutionDir)Output\
 </PostBuildEvent>

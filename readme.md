@@ -18,6 +18,7 @@ Copy the following files [from here](https://github.com/skalavala/FlashCards/tre
 
 * FlashCards.exe (The main program that you run on your computer)
 * FlashCards.exe.config (A settings file that tells the program where to look for the data file)
+* Newtonsoft.Json.dll (A library that knows how to read the data file)
 * data.json (This is the actual data file. You can add/edit the contents, make sure you have a backup first!)
 
 ### Step 3: 

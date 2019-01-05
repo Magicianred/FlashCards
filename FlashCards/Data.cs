@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Author       :   Mahasri Kalavala
+ * Date         :   1/5/2019
+ * Description  :   This application is written to help memorize many things
+ *                  including languages, alphabets, words, formulas and more!
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,15 +12,15 @@ using System.Configuration;
 
 namespace FlashCards
 {
-    public sealed class FlashCardDataManager
+    public sealed class Data
     {
 
         private static TopicJsonData _data = null;
         private static string _flashcardFile = string.Empty;
 
-        public static readonly FlashCardDataManager TheFlashCardDataManager = new FlashCardDataManager();
+        public static readonly Data TheData = new Data();
 
-        private FlashCardDataManager()
+        private Data()
         {
             if (null == _data)
                 LoadTopics();
@@ -39,7 +44,7 @@ namespace FlashCards
             }
             catch (Exception e)
             {
-                throw new Exception("Error loading file!", e);
+                throw new Exception(Constants.ERROR_LOADING_DATA, e);
             }
         }
 

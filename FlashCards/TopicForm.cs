@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Author       :   Mahasri Kalavala
+ * Date         :   1/5/2019
+ * Description  :   This application is written to help memorize many things
+ *                  including languages, alphabets, words, formulas and more!
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +39,7 @@ namespace FlashCards
 
         private void RefreshData()
         {
-            _data = _data = FlashCardDataManager.TheFlashCardDataManager.Topics();
+            _data = _data = Data.TheData.Topics();
             if (_mode == Common.FormMode.Edit)
             {
                 lstData.Items.Clear();
@@ -72,8 +77,9 @@ namespace FlashCards
             if (lstData.SelectedItems.Count == 0)
                 return;
 
-            CardForm df = new CardForm(Common.FormMode.Edit, lstData.SelectedItems[0].Text,
-                                                     (string)lstData.SelectedItems[0].Tag);
+            CardForm df = new CardForm(Common.FormMode.Edit, 
+                                       lstData.SelectedItems[0].Text,
+                                       (string)lstData.SelectedItems[0].Tag);
             df.ShowDialog();
         }
 
@@ -81,8 +87,9 @@ namespace FlashCards
         {
             if ( txtName.Text == string.Empty || txtUrl.Text == string.Empty)
             {
-                MessageBox.Show("Please enter all the required information.", "Data", 
-                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new MyMessageBox(Constants.TITLE_MISSINGDATA,
+                                 Constants.MSG_REQUIRED_DATA, 
+                                 MessageBoxButtons.OK);
                 return;
             }
 
@@ -112,19 +119,22 @@ namespace FlashCards
             if (lstData.SelectedItems.Count == 0)
                 return;
 
-            CardForm cf = new CardForm(Common.FormMode.Edit, lstData.SelectedItems[0].Text,
-                                                     (string)lstData.SelectedItems[0].Tag);
+            CardForm cf = new CardForm(Common.FormMode.Edit, 
+                                       lstData.SelectedItems[0].Text,
+                                       (string)lstData.SelectedItems[0].Tag);
             DialogResult dr = cf.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                FlashCardDataManager.TheFlashCardDataManager.UpdateTopicDataByName(_topicName, cf.Key, cf.Value);
+                Data.TheData.UpdateTopicDataByName(_topicName, cf.Key, cf.Value);
                 RefreshData();
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            CardForm cf = new CardForm(Common.FormMode.Add, string.Empty, string.Empty);
+            CardForm cf = new CardForm(Common.FormMode.Add, 
+                                       string.Empty, 
+                                       string.Empty);
             DialogResult dr = cf.ShowDialog();
             if (dr == DialogResult.OK)
             {
@@ -143,11 +153,12 @@ namespace FlashCards
                 return;
 
             string itemKey = lstData.SelectedItems[0].Text;
-            string msg = string.Format("Are you sure, you want to delete the topic '{0}'?", itemKey);
-            DialogResult dr = MessageBox.Show(msg, "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dr = new MyMessageBox(Constants.TITLE_CONFIRM_DELETE,
+                                               string.Format(Constants.MSG_CONFIRM_DELETE, itemKey), 
+                                               MessageBoxButtons.YesNo).ShowDialog();
             if (dr == DialogResult.Yes)
             {
-                FlashCardDataManager.TheFlashCardDataManager.RemoveTopicDataByName(_topicName, itemKey);
+                Data.TheData.RemoveTopicDataByName(_topicName, itemKey);
                 RefreshData();
             }
         }

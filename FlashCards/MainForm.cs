@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Author       :   Mahasri Kalavala
+ * Date         :   1/5/2019
+ * Description  :   This application is written to help memorize many things
+ *                  including languages, alphabets, words, formulas and more!
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,12 +36,14 @@ namespace FlashCards
             if (!VerifyDataFile())
                 return;
 
-            _data = FlashCardDataManager.TheFlashCardDataManager.Topics();
+            _data = Data.TheData.Topics();
             lstTopics.Items.Clear();
 
             if (_data == null)
             {
-                MessageBox.Show("Unable to load the data file. Invalid or corrupted json file.\n\nApplication cannot proceed until the problem is fixed.", "Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                new MyMessageBox(Constants.TITLE_ATTENTION, 
+                                 Constants.ERROR_INVALID_JSON, 
+                            MessageBoxButtons.OK).ShowDialog();
                 this.DialogResult = DialogResult.Abort;
                 this.Close();
             }
@@ -60,15 +67,19 @@ namespace FlashCards
             _dataFilePath = ConfigurationManager.AppSettings["topicFilePath"];
             if (null == _dataFilePath)
             {
-                string msg = "The data file is required to run this application. Please make sure the file path is specified correctly in the FlashCards.exe.config file.";
-                MessageBox.Show(msg, "Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new MyMessageBox(Constants.TITLE_ATTENTION, 
+                                 Constants.ERROR_NO_DATA, 
+                                 MessageBoxButtons.OK).ShowDialog();
                 this.Close();
                 return false;
             }
 
             if (!System.IO.File.Exists(_dataFilePath))
             {
-                MessageBox.Show("File '" + _dataFilePath + "' does not exist!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new MyMessageBox(Constants.TITLE_ATTENTION, 
+                                 string.Format(Constants.ERROR_NO_FILE, 
+                                               _dataFilePath) ,
+                                 MessageBoxButtons.OK).ShowDialog();
                 return false;
             }
     
@@ -98,7 +109,9 @@ namespace FlashCards
                 return;
 
             this.Visible = false;
-            FlashCardForm frm = new FlashCardForm(_data, lstTopics.SelectedItems[0].Text, chkRandom.Checked);
+            FlashCardForm frm = new FlashCardForm(_data, 
+                                    lstTopics.SelectedItems[0].Text, 
+                                    chkRandom.Checked);
             frm.ShowDialog();
             this.Visible = true;
         }
@@ -109,7 +122,9 @@ namespace FlashCards
             DialogResult dr = topic.ShowDialog();
             if ( dr == DialogResult.OK)
             {
-                FlashCardDataManager.TheFlashCardDataManager.AddTopicByName(topic.TopicName, topic.TopicUrl, topic.TopicEntries);
+                Data.TheData.AddTopicByName(topic.TopicName, 
+                                            topic.TopicUrl, 
+                                            topic.TopicEntries);
             }
             RefreshData();
         }
@@ -126,7 +141,7 @@ namespace FlashCards
                 newTopic.name = tf.TopicName;
                 newTopic.url = tf.TopicUrl;
 
-                FlashCardDataManager.TheFlashCardDataManager.UpdateTopic(newTopic);
+                Data.TheData.UpdateTopic(newTopic);
             }
             RefreshData();
         }
@@ -137,11 +152,13 @@ namespace FlashCards
                 return;
 
             string name = lstTopics.SelectedItems[0].Text;
-            string msg = string.Format("Are you sure, you want to delete the topic '{0}'?", name);
-            DialogResult dr = MessageBox.Show(msg, "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            string msg = string.Format(Constants.MSG_CONFIRM_DELETE, name);
+            DialogResult dr = new MyMessageBox(Constants.TITLE_CONFIRM_DELETE, 
+                                               msg, 
+                                               MessageBoxButtons.YesNo).ShowDialog();
             if ( dr == DialogResult.Yes)
             {
-                FlashCardDataManager.TheFlashCardDataManager.RemoveTopicByName(name);
+                Data.TheData.RemoveTopicByName(name);
                 RefreshData();
             }
         }

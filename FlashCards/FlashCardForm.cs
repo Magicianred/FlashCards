@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Author       :   Mahasri Kalavala
+ * Date         :   1/5/2019
+ * Description  :   This application is written to help memorize many things
+ *                  including languages, alphabets, words, formulas and more!
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -28,6 +33,8 @@ namespace FlashCards
         private DateTime _startTime;
         private List<Topic> _data;
 
+        private static readonly string TIME_FORMAT = "{0:hh\\:mm\\:ss}";
+
         private Dictionary<string, string> _flashCards = new Dictionary<string, string>(32);
 
         public FlashCardForm(List<Topic> data, string topic, bool random)
@@ -55,13 +62,14 @@ namespace FlashCards
         private void TotalTime_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             TimeSpan ts = (DateTime.Now - _startTime);
-            toolStrip4.Text = string.Format("{0:hh\\:mm\\:ss}", ts);
+            toolStrip4.Text = string.Format(TIME_FORMAT, ts);
         }
 
         private void FlashForm_Load(object sender, EventArgs e)
         {
-            this.Text = "Flash Cards for " + this._topic.ToUpperInvariant();
-            grpCharacter.Text = _flashCards.Count.ToString() + " flash cards!";
+            this.Text = string.Format(Constants.FLASHCARDS_TITLE, this._topic);
+            grpCharacter.Text = string.Format(Constants.FLASHCARDS_COUNT, 
+                                              _flashCards.Count.ToString()); 
 
             // start flash cards
             Start();
@@ -91,7 +99,10 @@ namespace FlashCards
                           .FirstOrDefault(r => r.Checked);
             if (null == checkedButton)
             {
-                MessageBox.Show("You have to select an answer to continue!", "Oops" , MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MyMessageBox mb = new MyMessageBox(Constants.TITLE_ATTENTION, 
+                                                   Constants.MSG_SELECT_ANSWER, 
+                                                   MessageBoxButtons.OK);
+                mb.ShowDialog();
                 return;
             }
 
@@ -114,9 +125,10 @@ namespace FlashCards
                         btnTag = (string)((RadioButton)radios[index]).Tag;
                     }
                 }
-                string msg = string.Format("You guessed the wrong answer! The correct Answer is:\n\n{0}",
-                                            btnTag);
-                MessageBox.Show(msg, "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                new MyMessageBox(Constants.TITLE_ATTENTION,
+                                 string.Format(Constants.MSG_WRONG_ANSWER, btnTag),
+                                 MessageBoxButtons.OK).ShowDialog();
 
                 for(int i = 0; i <radios.Length; i++)
                 {
@@ -156,8 +168,10 @@ namespace FlashCards
 
         private void UpdateToolBarStatus()
         {
-            toolStrip1.Text = _rightAnswers.ToString() + " RIGHT!     ";
-            toolStrip2.Text = _wrongAnswers.ToString() + " WRONG!     ";
+            toolStrip1.Text = string.Format(Constants.MSG_TOOLTIP_RIGHT, 
+                                            _rightAnswers.ToString());
+            toolStrip2.Text = string.Format(Constants.MSG_TOOLTIP_WRONG, 
+                                            _wrongAnswers.ToString());
         }
 
         private void FlashNewCard()
@@ -177,14 +191,12 @@ namespace FlashCards
                     _totalTime.Stop();
                     TimeSpan ts = DateTime.Now - _startTime;
                     string timespent = string.Empty;
-                    if (ts.Hours > 0) timespent += ts.Hours.ToString() + " hours ";
-                    if (ts.Minutes > 0) timespent += ts.Minutes.ToString() + " minutes ";
-                    timespent += ts.Seconds.ToString() + " seconds! ";
+                    if (ts.Hours > 0) timespent += string.Format(" {0} {1} ", ts.Hours.ToString() , Constants.HOURS);
+                    if (ts.Minutes > 0) timespent += string.Format(" {0} {1} ", ts.Minutes.ToString(), Constants.MINUTES);
+                    timespent += string.Format(" {0} {1} ", ts.Seconds.ToString(), Constants.SECONDS);
 
-                    string msg = string.Format("You finished {0} cards in {1} Great job!!!\nDo you want to start over?",
-                                                    _flashCards.Count.ToString(), timespent);
-                    if ( DialogResult.Yes == MessageBox.Show(msg, "Finish", 
-                                     MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    string msg = string.Format(Constants.MSG_FINISHED, _flashCards.Count.ToString(), timespent);
+                    if ( DialogResult.Yes == new MyMessageBox(Constants.TITLE_GREATJOB, msg, MessageBoxButtons.YesNo).ShowDialog())
                     {
                         _currentQuestionIndex = 0;
                         _totalTime.Stop();

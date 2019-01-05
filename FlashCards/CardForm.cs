@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* Author       :   Mahasri Kalavala
+ * Date         :   1/5/2019
+ * Description  :   This application is written to help memorize many things
+ *                  including languages, alphabets, words, formulas and more!
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,8 +34,8 @@ namespace FlashCards
         {
             if (_mode == Common.FormMode.Add)
             {
-                txtKey.Text = "";
-                txtValue.Text = "";
+                txtKey.Text = string.Empty;
+                txtValue.Text = string.Empty;
             }
             if ( _mode == Common.FormMode.Edit)
             {
@@ -43,7 +48,10 @@ namespace FlashCards
         {
             if (txtKey.Text == string.Empty || txtValue.Text == string.Empty)
             {
-                MessageBox.Show("Please fill in all the fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MyMessageBox mb = new MyMessageBox(Constants.TITLE_MISSINGDATA, 
+                                                   Constants.MSG_REQUIRED_DATA, 
+                                                   MessageBoxButtons.OK);
+                mb.ShowDialog();
                 return;
             }
 

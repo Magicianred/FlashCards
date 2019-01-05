@@ -286,32 +286,6 @@
         "12345": "more numbers",
         "abc123": "alas!"
       }
-    },
-    {
-      "name": "This is a sample data",
-      "url": "This is a sample data",
-      "data": {}
-    },
-    {
-      "name": "This is a sample data",
-      "url": "This is a sample data",
-      "data": {
-        "123": "123"
-      }
-    },
-    {
-      "name": "This is a sample data",
-      "url": "This is a sample data",
-      "data": {
-        "123": "123"
-      }
-    },
-    {
-      "name": "This is a sample data",
-      "url": "This is a sample data",
-      "data": {
-        "123": "123"
-      }
     }
   ]
 }

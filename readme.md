@@ -16,7 +16,7 @@ This is the `FlashCard` view, where it either randomly shows flash cards or sequ
 </p>
 <br><br>
 
-# This is Fantastic! How do I run this?
+# How do I run this?
 
 ### Step 1:
 You need a Microsoft Windows Operating System with Microsoft .Net installed to run this application. <br> I'd recommend you download the files and try to run it first.

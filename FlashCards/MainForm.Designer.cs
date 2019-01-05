@@ -44,12 +44,12 @@
             this.lstTopics.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.name,
             this.items});
-            this.lstTopics.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lstTopics.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lstTopics.FullRowSelect = true;
             this.lstTopics.Location = new System.Drawing.Point(12, 12);
             this.lstTopics.MultiSelect = false;
             this.lstTopics.Name = "lstTopics";
-            this.lstTopics.Size = new System.Drawing.Size(682, 339);
+            this.lstTopics.Size = new System.Drawing.Size(528, 225);
             this.lstTopics.TabIndex = 0;
             this.lstTopics.UseCompatibleStateImageBehavior = false;
             this.lstTopics.View = System.Windows.Forms.View.Details;
@@ -59,21 +59,21 @@
             // name
             // 
             this.name.Text = "Topic";
-            this.name.Width = 340;
+            this.name.Width = 362;
             // 
             // items
             // 
             this.items.Text = "Number of Cards";
-            this.items.Width = 300;
+            this.items.Width = 131;
             // 
             // btnOpenFlashCards
             // 
             this.btnOpenFlashCards.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOpenFlashCards.BackgroundImage")));
             this.btnOpenFlashCards.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnOpenFlashCards.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenFlashCards.Location = new System.Drawing.Point(470, 368);
+            this.btnOpenFlashCards.Location = new System.Drawing.Point(439, 243);
             this.btnOpenFlashCards.Name = "btnOpenFlashCards";
-            this.btnOpenFlashCards.Size = new System.Drawing.Size(224, 53);
+            this.btnOpenFlashCards.Size = new System.Drawing.Size(101, 31);
             this.btnOpenFlashCards.TabIndex = 1;
             this.btnOpenFlashCards.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpenFlashCards.UseVisualStyleBackColor = true;
@@ -82,21 +82,21 @@
             // chkRandom
             // 
             this.chkRandom.AutoSize = true;
-            this.chkRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkRandom.Location = new System.Drawing.Point(12, 436);
+            this.chkRandom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkRandom.Location = new System.Drawing.Point(335, 249);
             this.chkRandom.Name = "chkRandom";
-            this.chkRandom.Size = new System.Drawing.Size(298, 30);
+            this.chkRandom.Size = new System.Drawing.Size(80, 21);
             this.chkRandom.TabIndex = 5;
-            this.chkRandom.Text = "Show Random Flash Cards";
+            this.chkRandom.Text = "Random";
             this.chkRandom.UseVisualStyleBackColor = true;
             // 
             // btnEditTopic
             // 
             this.btnEditTopic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnEditTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditTopic.Location = new System.Drawing.Point(314, 368);
+            this.btnEditTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditTopic.Location = new System.Drawing.Point(220, 243);
             this.btnEditTopic.Name = "btnEditTopic";
-            this.btnEditTopic.Size = new System.Drawing.Size(136, 53);
+            this.btnEditTopic.Size = new System.Drawing.Size(98, 31);
             this.btnEditTopic.TabIndex = 6;
             this.btnEditTopic.Text = "Edit Topic";
             this.btnEditTopic.UseVisualStyleBackColor = true;
@@ -105,10 +105,10 @@
             // btnAddTopic
             // 
             this.btnAddTopic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTopic.Location = new System.Drawing.Point(12, 368);
+            this.btnAddTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTopic.Location = new System.Drawing.Point(12, 243);
             this.btnAddTopic.Name = "btnAddTopic";
-            this.btnAddTopic.Size = new System.Drawing.Size(136, 53);
+            this.btnAddTopic.Size = new System.Drawing.Size(98, 31);
             this.btnAddTopic.TabIndex = 7;
             this.btnAddTopic.Text = "Add Topic";
             this.btnAddTopic.UseVisualStyleBackColor = true;
@@ -117,10 +117,10 @@
             // btnDeleteTopic
             // 
             this.btnDeleteTopic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnDeleteTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteTopic.Location = new System.Drawing.Point(163, 368);
+            this.btnDeleteTopic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteTopic.Location = new System.Drawing.Point(116, 243);
             this.btnDeleteTopic.Name = "btnDeleteTopic";
-            this.btnDeleteTopic.Size = new System.Drawing.Size(136, 53);
+            this.btnDeleteTopic.Size = new System.Drawing.Size(98, 31);
             this.btnDeleteTopic.TabIndex = 8;
             this.btnDeleteTopic.Text = "Delete Topic";
             this.btnDeleteTopic.UseVisualStyleBackColor = true;
@@ -130,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 478);
+            this.ClientSize = new System.Drawing.Size(553, 287);
             this.Controls.Add(this.btnDeleteTopic);
             this.Controls.Add(this.chkRandom);
             this.Controls.Add(this.btnOpenFlashCards);

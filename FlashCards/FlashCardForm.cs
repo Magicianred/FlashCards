@@ -98,26 +98,36 @@ namespace FlashCards
             // Go button is clicked, verify answer, and show hint if needed
             if (!VerifyAnswer())
             {
+                Color defaultBackColor = rdoAnswer1.BackColor;
+                Color defaultForeColor = rdoAnswer1.ForeColor;
+
                 string btnTag = string.Empty;
                 object[] radios = new object[] { rdoAnswer1, rdoAnswer2, rdoAnswer3, rdoAnswer4 };
-                foreach (RadioButton radio in radios)
+                object[] txtAnswers = new object[] { txtAnswer1, txtAnswer2, txtAnswer3, txtAnswer4 };
+                for ( int index = 0; index < radios.Length; index++)
                 {
-                    if (radio.Text == _currentAnswer)
+                    if ((string)((RadioButton)radios[index]).Tag == _currentAnswer)
                     {
-                        radio.ForeColor = Color.Red;
-                        btnTag = (string)radio.Tag;
+                        ((TextBox)txtAnswers[index]).BackColor = defaultBackColor;
+                        ((TextBox)txtAnswers[index]).ForeColor = defaultBackColor;
+                        ((TextBox)txtAnswers[index]).ForeColor = Color.Green;
+                        btnTag = (string)((RadioButton)radios[index]).Tag;
                     }
                 }
-                string msg = string.Format("You guessed the wrong answer! The correct Answer is {0}",
+                string msg = string.Format("You guessed the wrong answer! The correct Answer is:\n\n{0}",
                                             btnTag);
                 MessageBox.Show(msg, "Oops!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                // there maybe more than one radio button that may have correct answer, reset all radio colors
-                foreach (RadioButton radio in radios)
+                for(int i = 0; i <radios.Length; i++)
                 {
-                    if (radio.Text == _currentAnswer)
-                        radio.ForeColor = Color.Black;
+                    if (((RadioButton)radios[i]).Text == _currentAnswer)
+                        ((RadioButton)radios[i]).ForeColor = Color.Black;
+
+                    ((TextBox)txtAnswers[i]).BackColor = defaultBackColor;
+                    ((TextBox)txtAnswers[i]).ForeColor = defaultForeColor;
+                    ((TextBox)txtAnswers[i]).BackColor = defaultBackColor;
                 }
+
             }
             FlashNewCard();
         }
@@ -126,11 +136,10 @@ namespace FlashCards
         {
             // verify the text and if it is correct, increment right answer 
             // else increment wrong answer and move on
-
             var checkedButton = grpAnswers.Controls.OfType<RadioButton>()
                                       .FirstOrDefault(r => r.Checked);
             bool bRetVal = false;
-            if (checkedButton.Text == _currentAnswer)
+            if ((string)checkedButton.Tag == _currentAnswer)
             {
                 _rightAnswers++;
                 bRetVal = true;
@@ -217,15 +226,21 @@ namespace FlashCards
             // then get random answers and set rest of the radio buttons
             // there will be duplicates if there aren't enough answers
             object[] radios = new object[] { rdoAnswer1, rdoAnswer2, rdoAnswer3, rdoAnswer4 };
+            object[] txtAnswers = new object[] { txtAnswer1, txtAnswer2, txtAnswer3, txtAnswer4 };
             int randNum =_rand.Next(4);
             RadioButton btn = (RadioButton)radios[randNum];
-            btn.Text = currentAnswer;
-            foreach (var radio in radios)
+            TextBox tb = (TextBox)txtAnswers[randNum];
+            tb.Text = currentAnswer;
+            btn.Tag = currentAnswer;
+
+            for ( int i = 0; i < txtAnswers.Length; i++)
             {
-                RadioButton b = (RadioButton)radio;
-                if (b.Text != currentAnswer)
+                TextBox t = (TextBox)txtAnswers[i];
+                if (t.Text != currentAnswer)
                 {
-                    b.Text = GetRandomAnswer();
+                    string randAnswer = GetRandomAnswer();
+                    t.Text = randAnswer;
+                    ((RadioButton)radios[i]).Tag = randAnswer;
                 }
             }
         }

@@ -2,21 +2,23 @@
 
 Looking for a digital `FlashCards` that you can run on your computer to learn and memorize stuff? You've come to the right place! Use this `FlashCards` app to memorize any information - including foreign alphabets, words, sentences, mathematical and scientific formulas, and more!
 <p align="center"><img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/main_window.png"/></p>
-This is the main window, where you select the language. The languages are picked up from the json file under data folder.
+This is the main window, where you select the topics. The topics are picked up from the data.json file in the assembly folder.
 <br>
 <p align="center"><img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/flashcard.png" /></p>
-This is the `FlashCard` view, where it either randomly shows flash cards or sequentially. You can then guess the answers by selecting right option. It keeps track of how many you got right and how many you got wrong, and how long it took for you to finish it. What are you waiting for? Download the application and start learning new stuff!
+This is the `FlashCard` view, where it either randomly shows flash cards or sequentially. You can then guess the answers by selecting right option. It keeps track of how many you got right and how many you got wrong, and how long it took for you to finish it. What are you waiting for? Download the application and start learning new stuff!<br>
 <br>
 <p align="center">
 <img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/edit_topic.png" />
 </p>
+This is how you can add new elements to the existing topics, and manage the data.
 <br>
 <p align="center">
 <img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/edit_topic_data.png" />
 </p>
-<br><br>
 
-# How do I run this?
+<br>
+
+# Running this program on Microsoft Windows
 
 ### Step 1:
 You need a Microsoft Windows Operating System with Microsoft .Net installed to run this application. <br> I'd recommend you download the files and try to run it first.
@@ -38,7 +40,7 @@ Feel free to edit `data.json` using your favorite editor, and add/modify content
 If you have questions, feel free to [contact me](https://github.com/skalavala/FlashCards/issues/new)
 
 # I have Ubuntu. How do I run this on Ubuntu?
-You can run this application on Ubuntu, thanks to [plavelo](https://github.com/plavelo), he showed how to run it on Ubuntu. Follow the steps:
+You can run this application on Ubuntu, Thanks to [plavelo](https://github.com/plavelo), he showed how to run it on Ubuntu. Follow the steps:
 
 ### Step 1: Clone the repo
 ```
@@ -102,7 +104,7 @@ $ cd FlashCards/bin/Debug/
 $ mono FlashCards.exe
 ```
 
-A Big thanks to [plavelo](https://github.com/plavelo) for porting this app 😊
+A BIG thanks to [plavelo](https://github.com/plavelo) for porting this app ??
 <br>
 
 Enjoy

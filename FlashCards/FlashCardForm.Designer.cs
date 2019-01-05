@@ -41,6 +41,10 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.grpAnswers = new System.Windows.Forms.GroupBox();
+            this.txtAnswer4 = new System.Windows.Forms.TextBox();
+            this.txtAnswer3 = new System.Windows.Forms.TextBox();
+            this.txtAnswer2 = new System.Windows.Forms.TextBox();
+            this.txtAnswer1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,10 +53,6 @@
             this.rdoAnswer3 = new System.Windows.Forms.RadioButton();
             this.rdoAnswer2 = new System.Windows.Forms.RadioButton();
             this.rdoAnswer1 = new System.Windows.Forms.RadioButton();
-            this.txtAnswer1 = new System.Windows.Forms.TextBox();
-            this.txtAnswer2 = new System.Windows.Forms.TextBox();
-            this.txtAnswer3 = new System.Windows.Forms.TextBox();
-            this.txtAnswer4 = new System.Windows.Forms.TextBox();
             this.grpCharacter.SuspendLayout();
             this.statusBar.SuspendLayout();
             this.grpAnswers.SuspendLayout();
@@ -178,6 +178,46 @@
             this.grpAnswers.TabStop = false;
             this.grpAnswers.Text = "Select the right answer:";
             // 
+            // txtAnswer4
+            // 
+            this.txtAnswer4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAnswer4.Location = new System.Drawing.Point(385, 59);
+            this.txtAnswer4.Name = "txtAnswer4";
+            this.txtAnswer4.ReadOnly = true;
+            this.txtAnswer4.Size = new System.Drawing.Size(232, 16);
+            this.txtAnswer4.TabIndex = 11;
+            this.txtAnswer4.Text = "this is a sample text";
+            // 
+            // txtAnswer3
+            // 
+            this.txtAnswer3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAnswer3.Location = new System.Drawing.Point(385, 29);
+            this.txtAnswer3.Name = "txtAnswer3";
+            this.txtAnswer3.ReadOnly = true;
+            this.txtAnswer3.Size = new System.Drawing.Size(232, 16);
+            this.txtAnswer3.TabIndex = 10;
+            this.txtAnswer3.Text = "this is a sample text";
+            // 
+            // txtAnswer2
+            // 
+            this.txtAnswer2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAnswer2.Location = new System.Drawing.Point(53, 66);
+            this.txtAnswer2.Name = "txtAnswer2";
+            this.txtAnswer2.ReadOnly = true;
+            this.txtAnswer2.Size = new System.Drawing.Size(232, 16);
+            this.txtAnswer2.TabIndex = 9;
+            this.txtAnswer2.Text = "this is a sample text";
+            // 
+            // txtAnswer1
+            // 
+            this.txtAnswer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAnswer1.Location = new System.Drawing.Point(53, 34);
+            this.txtAnswer1.Name = "txtAnswer1";
+            this.txtAnswer1.ReadOnly = true;
+            this.txtAnswer1.Size = new System.Drawing.Size(232, 16);
+            this.txtAnswer1.TabIndex = 8;
+            this.txtAnswer1.Text = "this is a sample text";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -257,46 +297,6 @@
             this.rdoAnswer1.TabStop = true;
             this.rdoAnswer1.Tag = "A";
             this.rdoAnswer1.UseVisualStyleBackColor = true;
-            // 
-            // txtAnswer1
-            // 
-            this.txtAnswer1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAnswer1.Location = new System.Drawing.Point(53, 34);
-            this.txtAnswer1.Name = "txtAnswer1";
-            this.txtAnswer1.ReadOnly = true;
-            this.txtAnswer1.Size = new System.Drawing.Size(232, 16);
-            this.txtAnswer1.TabIndex = 8;
-            this.txtAnswer1.Text = "this is a sample text";
-            // 
-            // txtAnswer2
-            // 
-            this.txtAnswer2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAnswer2.Location = new System.Drawing.Point(53, 66);
-            this.txtAnswer2.Name = "txtAnswer2";
-            this.txtAnswer2.ReadOnly = true;
-            this.txtAnswer2.Size = new System.Drawing.Size(232, 16);
-            this.txtAnswer2.TabIndex = 9;
-            this.txtAnswer2.Text = "this is a sample text";
-            // 
-            // txtAnswer3
-            // 
-            this.txtAnswer3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAnswer3.Location = new System.Drawing.Point(385, 29);
-            this.txtAnswer3.Name = "txtAnswer3";
-            this.txtAnswer3.ReadOnly = true;
-            this.txtAnswer3.Size = new System.Drawing.Size(232, 16);
-            this.txtAnswer3.TabIndex = 10;
-            this.txtAnswer3.Text = "this is a sample text";
-            // 
-            // txtAnswer4
-            // 
-            this.txtAnswer4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAnswer4.Location = new System.Drawing.Point(385, 59);
-            this.txtAnswer4.Name = "txtAnswer4";
-            this.txtAnswer4.ReadOnly = true;
-            this.txtAnswer4.Size = new System.Drawing.Size(232, 16);
-            this.txtAnswer4.TabIndex = 11;
-            this.txtAnswer4.Text = "this is a sample text";
             // 
             // FlashCardForm
             // 

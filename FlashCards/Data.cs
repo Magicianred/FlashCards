@@ -28,23 +28,22 @@ namespace FlashCards
 
         private void LoadTopics()
         {
-            try
-            {
-                _flashcardFile = ConfigurationManager.AppSettings["topicFilePath"];
+            _flashcardFile = Common.DataFilePath;
 
-                if (Persistence.FileExists(_flashcardFile))
+            if (Persistence.FileExists(_flashcardFile))
+            {
+                _data = Persistence.LoadFile(_flashcardFile);
+                if (_data == null)
                 {
-                    _data = Persistence.LoadFile(_flashcardFile);
-                }
-                else
-                {
-                    _data = new TopicJsonData();
-                    SaveTopics();
+                    new MyMessageBox(Constants.TITLE_ATTENTION,
+                                     string.Format(Constants.ERROR_LOADING_DATA, _flashcardFile),
+                                     System.Windows.Forms.MessageBoxButtons.OK).ShowDialog();
                 }
             }
-            catch (Exception e)
+            else
             {
-                throw new Exception(Constants.ERROR_LOADING_DATA, e);
+                _data = new TopicJsonData();
+                SaveTopics();
             }
         }
 
@@ -100,29 +99,9 @@ namespace FlashCards
             }
         }
 
-        public bool AddTopicDataByName(string topic, string key, string value)
-        {
-            if (_data == null)
-                return false;
-
-            Topic t = GetTopicByName(topic);
-            if (null != t)
-            {
-                if (!t.data.ContainsKey(key))
-                {
-                    t.data.Add(key, value);
-                    SaveTopics();
-                    return true;
-                }
-
-                return false;
-            }
-            return false;
-        }
-
         public Topic GetTopicByName(string name)
         {
-            if (_data == null)
+            if (_data == null || _data.topics == null)
                 return null;
 
             Topic retVal = _data.topics.Find(delegate (Topic dto) {
@@ -131,10 +110,10 @@ namespace FlashCards
             return retVal;
         }
 
-        public void AddTopicByName(string name, string url, Dictionary<string, string> items)
+        public bool AddTopicByName(string name, string url, Dictionary<string, string> items)
         {
             if (_data == null)
-                return;
+                return false;
 
             Topic retVal = GetTopicByName(name);
             if (null == retVal)
@@ -143,19 +122,26 @@ namespace FlashCards
                 newTopic.name = name;
                 newTopic.url = url;
                 newTopic.data = items;
+                if (_data.topics == null)
+                    _data.topics = new List<Topic>(4);
                 _data.topics.Add(newTopic);
 
                 SaveTopics();
+                return true;
             }
-            return;
+            return false;
         }
 
-        public void UpdateTopic(Topic topic)
+        public bool UpdateTopic(Topic topic)
         {
+            if (_data == null || _data.topics == null)
+                return false;
+
             if (null != topic)
             {
                 Topic t = GetTopicByName(topic.name);
-                _data.topics.Remove(t);
+                if ( null != t)
+                    _data.topics.Remove(t);
             }
 
             Topic newTopic = new Topic();
@@ -165,6 +151,7 @@ namespace FlashCards
 
             _data.topics.Add(newTopic);
             SaveTopics();
+            return true;
         }
     }
 }

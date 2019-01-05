@@ -18,7 +18,6 @@ namespace FlashCards
 {
     public partial class MainForm : Form
     {
-        private string _dataFilePath;
         private List<Topic> _data;
 
         public MainForm()
@@ -33,57 +32,25 @@ namespace FlashCards
 
         private void RefreshData()
         {
-            if (!VerifyDataFile())
-                return;
-
             _data = Data.TheData.Topics();
             lstTopics.Items.Clear();
 
-            if (_data == null)
+            if (_data != null)
             {
-                new MyMessageBox(Constants.TITLE_ATTENTION, 
-                                 Constants.ERROR_INVALID_JSON, 
-                            MessageBoxButtons.OK).ShowDialog();
-                this.DialogResult = DialogResult.Abort;
-                this.Close();
-            }
-
-            foreach (Topic topic in _data)
-            {
-                ListViewItem lvi = new ListViewItem();
-                lvi.Text = topic.name;
-                lvi.SubItems.Add(topic.data.Count.ToString());
-                lvi.Tag = topic.name;
-                lstTopics.Items.Add(lvi);
+                foreach (Topic topic in _data)
+                {
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = topic.name;
+                    lvi.SubItems.Add(topic.data.Count.ToString());
+                    lvi.Tag = topic.name;
+                    lstTopics.Items.Add(lvi);
+                }
             }
 
             btnOpenFlashCards.Visible = lstTopics.SelectedItems.Count > 0;
             btnEditTopic.Visible = lstTopics.SelectedItems.Count > 0;
             btnDeleteTopic.Visible = lstTopics.SelectedItems.Count > 0;
-        }
-
-        private bool VerifyDataFile()
-        {
-            _dataFilePath = ConfigurationManager.AppSettings["topicFilePath"];
-            if (null == _dataFilePath)
-            {
-                new MyMessageBox(Constants.TITLE_ATTENTION, 
-                                 Constants.ERROR_NO_DATA, 
-                                 MessageBoxButtons.OK).ShowDialog();
-                this.Close();
-                return false;
-            }
-
-            if (!System.IO.File.Exists(_dataFilePath))
-            {
-                new MyMessageBox(Constants.TITLE_ATTENTION, 
-                                 string.Format(Constants.ERROR_NO_FILE, 
-                                               _dataFilePath) ,
-                                 MessageBoxButtons.OK).ShowDialog();
-                return false;
-            }
-    
-            return true;
+            chkRandom.Visible = lstTopics.SelectedItems.Count > 0;
         }
 
         private void lstTopics_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,6 +58,7 @@ namespace FlashCards
             btnOpenFlashCards.Visible = lstTopics.SelectedItems.Count > 0;
             btnEditTopic.Visible = lstTopics.SelectedItems.Count > 0;
             btnDeleteTopic.Visible = lstTopics.SelectedItems.Count > 0;
+            chkRandom.Visible = lstTopics.SelectedItems.Count > 0;
         }
 
         private void btnOpenFlashCards_Click(object sender, EventArgs e)
@@ -122,9 +90,24 @@ namespace FlashCards
             DialogResult dr = topic.ShowDialog();
             if ( dr == DialogResult.OK)
             {
-                Data.TheData.AddTopicByName(topic.TopicName, 
+                bool retVal = Data.TheData.AddTopicByName(topic.TopicName, 
                                             topic.TopicUrl, 
                                             topic.TopicEntries);
+                if (false == retVal)
+                {
+                    if ( _data == null)
+                    {
+                        new MyMessageBox(Constants.TITLE_ATTENTION,
+                                     string.Format(Constants.TOPIC_ADD_FAILED, topic.TopicName),
+                                     MessageBoxButtons.OK).ShowDialog();
+                    }
+                    else
+                    {
+                        new MyMessageBox(Constants.TITLE_ATTENTION,
+                                     string.Format(Constants.TOPIC_EXISTS, topic.TopicName),
+                                     MessageBoxButtons.OK).ShowDialog();
+                    }
+                }
             }
             RefreshData();
         }

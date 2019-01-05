@@ -55,9 +55,8 @@ namespace FlashCards
             }
             catch
             {
-                
+                return null;
             }
-            return null;
         }
 
         public static void SaveFile(TopicJsonData data, string filePath)

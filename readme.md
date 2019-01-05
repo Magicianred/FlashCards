@@ -64,7 +64,7 @@ $ sudo apt install mono-complete
 +  <add key="topicFilePath" value="data.json"/>
  </appSettings>
  ```
-# Step 4: Modify FlashCards.csproj
+### Step 4: Modify FlashCards.csproj
 The current project uses build scripts, it runs MSDOS commands before and after each build, and copies the exe, dll and other into `output` folder. Remove that from the `.csproj` file. 
 
 ```

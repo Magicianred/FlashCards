@@ -54,7 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
-    <Compile Include="Data.cs" />
+    <Compile Include="FlashCardDataManager.cs" />
+    <Compile Include="Persistence.cs" />
     <Compile Include="CardForm.cs">
       <SubType>Form</SubType>
     </Compile>

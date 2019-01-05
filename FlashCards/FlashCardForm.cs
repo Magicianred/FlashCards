@@ -26,11 +26,11 @@ namespace FlashCards
         private int _currentQuestionIndex = 0;
 
         private DateTime _startTime;
-        private TopicJsonData _data;
+        private List<Topic> _data;
 
         private Dictionary<string, string> _flashCards = new Dictionary<string, string>(32);
 
-        public FlashCardForm(TopicJsonData data, string topic, bool random)
+        public FlashCardForm(List<Topic> data, string topic, bool random)
         {
             InitializeComponent();
             _totalTime = new System.Timers.Timer(1000);
@@ -39,7 +39,7 @@ namespace FlashCards
             this._randomMode = random;
             this._data = data;
 
-            foreach(Topic t in _data.topics)
+            foreach(Topic t in _data)
             {
                 if (t.name == this._topic)
                 {

@@ -12,14 +12,16 @@ namespace FlashCards
 {
     public partial class CardForm : Form
     {
-        private string _key;
-        private string _value;
+        public string Key { get; set; }
+        public string Value { get; set; }
+
         private Common.FormMode _mode;
+
         public CardForm(Common.FormMode mode, string key, string value)
         {
             this._mode = mode;
-            this._key = key;
-            this._value = value;
+            this.Key = key;
+            this.Value = value;
             InitializeComponent();
         }
 
@@ -32,13 +34,22 @@ namespace FlashCards
             }
             if ( _mode == Common.FormMode.Edit)
             {
-                txtKey.Text = this._key;
-                txtValue.Text = this._value;
+                txtKey.Text = this.Key;
+                txtValue.Text = this.Value;
             }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if (txtKey.Text == string.Empty || txtValue.Text == string.Empty)
+            {
+                MessageBox.Show("Please fill in all the fields.", "Missing Data", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            this.Key = txtKey.Text;
+            this.Value = txtValue.Text;
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

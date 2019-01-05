@@ -14,7 +14,7 @@ namespace FlashCards
     public partial class MainForm : Form
     {
         private string _dataFilePath;
-        private TopicJsonData _data;
+        private List<Topic> _data;
 
         public MainForm()
         {
@@ -23,23 +23,30 @@ namespace FlashCards
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Start();
+            RefreshData();
         }
 
-        private void Start()
+        private void RefreshData()
         {
             if (!VerifyDataFile())
                 return;
 
-            _data = Data.LoadFile(_dataFilePath);
+            _data = FlashCardDataManager.TheFlashCardDataManager.Topics();
             lstTopics.Items.Clear();
 
-            foreach (Topic l in _data.topics)
+            if (_data == null)
+            {
+                MessageBox.Show("Unable to load the data file. Invalid or corrupted json file.\n\nApplication cannot proceed until the problem is fixed.", "Data", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.DialogResult = DialogResult.Abort;
+                this.Close();
+            }
+
+            foreach (Topic topic in _data)
             {
                 ListViewItem lvi = new ListViewItem();
-                lvi.Text = l.name;
-                lvi.SubItems.Add(l.data.Count.ToString());
-                lvi.Tag = l.name;
+                lvi.Text = topic.name;
+                lvi.SubItems.Add(topic.data.Count.ToString());
+                lvi.Tag = topic.name;
                 lstTopics.Items.Add(lvi);
             }
 
@@ -98,26 +105,45 @@ namespace FlashCards
 
         private void btnAddTopic_Click(object sender, EventArgs e)
         {
-            TopicForm topic = new TopicForm(string.Empty, null, Common.FormMode.Add);
-            if ( DialogResult.OK == topic.ShowDialog())
+            TopicForm topic = new TopicForm(string.Empty, Common.FormMode.Add);
+            DialogResult dr = topic.ShowDialog();
+            if ( dr == DialogResult.OK)
             {
-                Start();
+                FlashCardDataManager.TheFlashCardDataManager.AddTopicByName(topic.TopicName, topic.TopicUrl, topic.TopicEntries);
             }
+            RefreshData();
         }
 
         private void btnEditTopic_Click(object sender, EventArgs e)
         {
             string topicName = lstTopics.SelectedItems[0].Text;
-            TopicForm topic = new TopicForm(topicName, _data, Common.FormMode.Edit);
-            if (DialogResult.OK == topic.ShowDialog())
+            TopicForm tf = new TopicForm(topicName, Common.FormMode.Edit);
+            DialogResult dr = tf.ShowDialog();
+            if ( dr == DialogResult.OK)
             {
-                Start();
+                Topic newTopic = new Topic();
+                newTopic.data = tf.TopicEntries;
+                newTopic.name = tf.TopicName;
+                newTopic.url = tf.TopicUrl;
+
+                FlashCardDataManager.TheFlashCardDataManager.UpdateTopic(newTopic);
             }
+            RefreshData();
         }
 
         private void btnDeleteTopic_Click(object sender, EventArgs e)
         {
+            if (lstTopics.SelectedItems.Count == 0)
+                return;
 
+            string name = lstTopics.SelectedItems[0].Text;
+            string msg = string.Format("Are you sure, you want to delete the topic '{0}'?", name);
+            DialogResult dr = MessageBox.Show(msg, "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if ( dr == DialogResult.Yes)
+            {
+                FlashCardDataManager.TheFlashCardDataManager.RemoveTopicByName(name);
+                RefreshData();
+            }
         }
     }
 }

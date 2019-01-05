@@ -102,6 +102,6 @@ $ cd FlashCards/bin/Debug/
 $ mono FlashCards.exe
 ```
 
-A Big thanks to [plavelo](https://github.com/plavelo) for porting this app :)
+A Big thanks to [plavelo](https://github.com/plavelo) for porting this app 😊
 <br>
 Enjoy

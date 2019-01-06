@@ -35,7 +35,7 @@ namespace FlashCards
         public static string DataFilePath {
             get
             {
-                return AssemblyDirectory + "\\" + Constants.DATA_FILE_NAME;
+                return Path.Combine(AssemblyDirectory, Constants.DATA_FILE_NAME);
             }
         }
     }

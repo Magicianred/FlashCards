@@ -63,12 +63,16 @@ namespace FlashCards
 
         private void BtnGo_LostFocus(object sender, EventArgs e)
         {
-            btnGo.BackColor = this.BackColor;
+            btnGo.Font = new Font("Microsoft Sans Serif", 10F, 
+                                   FontStyle.Regular, 
+                                   GraphicsUnit.Point, ((byte)(0)));
         }
 
         private void BtnGo_GotFocus(object sender, EventArgs e)
         {
-            btnGo.BackColor = SystemColors.GradientActiveCaption;
+            btnGo.Font = new Font("Microsoft Sans Serif", 12F,
+                                   FontStyle.Bold,
+                                   GraphicsUnit.Point, ((byte)(0)));
         }
 
         private void TotalTime_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

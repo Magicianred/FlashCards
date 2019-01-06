@@ -138,10 +138,10 @@ del $(SolutionDir)Output\*.dll
 del $(SolutionDir)Output\*.exe.config
 del $(SolutionDir)Output\*.json
     </PreBuildEvent>
-    <PreBuildEvent Condition="'$(OS)' == 'Unix'">rm $(SolutionDir)Output/*.exe
-rm $(SolutionDir)Output/*.dll
-rm $(SolutionDir)Output/*.exe.config
-rm $(SolutionDir)Output/*.json
+    <PreBuildEvent Condition="'$(OS)' == 'Unix'">rm -f $(SolutionDir)Output/*.exe
+rm -f $(SolutionDir)Output/*.dll
+rm -f $(SolutionDir)Output/*.exe.config
+rm -f $(SolutionDir)Output/*.json
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

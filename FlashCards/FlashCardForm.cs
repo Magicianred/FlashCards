@@ -57,6 +57,18 @@ namespace FlashCards
 
             _totalTime.Elapsed += TotalTime_Elapsed;
             toolStrip4.Text = string.Empty;
+            btnGo.GotFocus += BtnGo_GotFocus;
+            btnGo.LostFocus += BtnGo_LostFocus;
+        }
+
+        private void BtnGo_LostFocus(object sender, EventArgs e)
+        {
+            btnGo.BackColor = this.BackColor;
+        }
+
+        private void BtnGo_GotFocus(object sender, EventArgs e)
+        {
+            btnGo.BackColor = SystemColors.GradientActiveCaption;
         }
 
         private void TotalTime_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -68,8 +80,6 @@ namespace FlashCards
         private void FlashForm_Load(object sender, EventArgs e)
         {
             this.Text = string.Format(Constants.FLASHCARDS_TITLE, this._topic);
-            grpCharacter.Text = string.Format(Constants.FLASHCARDS_COUNT, 
-                                              _flashCards.Count.ToString()); 
 
             // start flash cards
             Start();
@@ -95,7 +105,7 @@ namespace FlashCards
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            var checkedButton = grpAnswers.Controls.OfType<RadioButton>()
+            var checkedButton = this.Controls.OfType<RadioButton>()
                           .FirstOrDefault(r => r.Checked);
             if (null == checkedButton)
             {
@@ -109,37 +119,28 @@ namespace FlashCards
             // Go button is clicked, verify answer, and show hint if needed
             if (!VerifyAnswer())
             {
-                Color defaultBackColor = rdoAnswer1.BackColor;
-                Color defaultForeColor = rdoAnswer1.ForeColor;
-
                 string btnTag = string.Empty;
                 object[] radios = new object[] { rdoAnswer1, rdoAnswer2, rdoAnswer3, rdoAnswer4 };
-                object[] txtAnswers = new object[] { txtAnswer1, txtAnswer2, txtAnswer3, txtAnswer4 };
-                for ( int index = 0; index < radios.Length; index++)
+                foreach ( RadioButton r in radios )
                 {
-                    if ((string)((RadioButton)radios[index]).Tag == _currentAnswer)
+                    if ( (string)r.Tag == _currentAnswer)
                     {
-                        ((TextBox)txtAnswers[index]).BackColor = defaultBackColor;
-                        ((TextBox)txtAnswers[index]).ForeColor = defaultBackColor;
-                        ((TextBox)txtAnswers[index]).ForeColor = Color.Green;
-                        btnTag = (string)((RadioButton)radios[index]).Tag;
+                        r.ForeColor = Color.Green;
+                        btnTag = (string)r.Text;
                     }
                 }
 
                 new MyMessageBox(Constants.TITLE_ATTENTION,
                                  string.Format(Constants.MSG_WRONG_ANSWER, btnTag),
                                  MessageBoxButtons.OK).ShowDialog();
-
-                for(int i = 0; i <radios.Length; i++)
+                foreach (RadioButton r in radios)
                 {
-                    if (((RadioButton)radios[i]).Text == _currentAnswer)
-                        ((RadioButton)radios[i]).ForeColor = Color.Black;
-
-                    ((TextBox)txtAnswers[i]).BackColor = defaultBackColor;
-                    ((TextBox)txtAnswers[i]).ForeColor = defaultForeColor;
-                    ((TextBox)txtAnswers[i]).BackColor = defaultBackColor;
+                    if ((string)r.Tag == _currentAnswer)
+                    {
+                        r.ForeColor = Color.Black;
+                        btnTag = (string)r.Tag;
+                    }
                 }
-
             }
             FlashNewCard();
         }
@@ -148,7 +149,7 @@ namespace FlashCards
         {
             // verify the text and if it is correct, increment right answer 
             // else increment wrong answer and move on
-            var checkedButton = grpAnswers.Controls.OfType<RadioButton>()
+            var checkedButton = this.Controls.OfType<RadioButton>()
                                       .FirstOrDefault(r => r.Checked);
             bool bRetVal = false;
             if ((string)checkedButton.Tag == _currentAnswer)
@@ -238,21 +239,18 @@ namespace FlashCards
             // then get random answers and set rest of the radio buttons
             // there will be duplicates if there aren't enough answers
             object[] radios = new object[] { rdoAnswer1, rdoAnswer2, rdoAnswer3, rdoAnswer4 };
-            object[] txtAnswers = new object[] { txtAnswer1, txtAnswer2, txtAnswer3, txtAnswer4 };
             int randNum =_rand.Next(4);
             RadioButton btn = (RadioButton)radios[randNum];
-            TextBox tb = (TextBox)txtAnswers[randNum];
-            tb.Text = currentAnswer;
             btn.Tag = currentAnswer;
+            btn.Text = currentAnswer;
 
-            for ( int i = 0; i < txtAnswers.Length; i++)
+            foreach (RadioButton r in radios)
             {
-                TextBox t = (TextBox)txtAnswers[i];
-                if (t.Text != currentAnswer)
+                if ( r.Text != currentAnswer)
                 {
                     string randAnswer = GetRandomAnswer();
-                    t.Text = randAnswer;
-                    ((RadioButton)radios[i]).Tag = randAnswer;
+                    r.Text = randAnswer;
+                    r.Tag = randAnswer;
                 }
             }
         }

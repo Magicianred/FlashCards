@@ -37,12 +37,15 @@
             // 
             // txtMessage
             // 
+            this.txtMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMessage.Location = new System.Drawing.Point(13, 13);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
             this.txtMessage.ReadOnly = true;
             this.txtMessage.Size = new System.Drawing.Size(496, 65);
             this.txtMessage.TabIndex = 0;
+            this.txtMessage.TabStop = false;
+            this.txtMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnOK
             // 
@@ -60,7 +63,7 @@
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(75, 23);
             this.btnNo.TabIndex = 2;
-            this.btnNo.Text = "NO";
+            this.btnNo.Text = "No";
             this.btnNo.UseVisualStyleBackColor = true;
             this.btnNo.Click += new System.EventHandler(this.btnNo_Click);
             // 

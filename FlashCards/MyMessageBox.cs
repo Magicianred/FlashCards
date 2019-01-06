@@ -51,6 +51,10 @@ namespace FlashCards
             {
                 btnNo.Focus();
             }
+            else
+            {
+                btnOK.Focus();
+            }
         }
 
         private void btnYes_Click(object sender, EventArgs e)

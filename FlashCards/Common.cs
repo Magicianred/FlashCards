@@ -51,7 +51,6 @@ namespace FlashCards
 
 
         public static readonly string FLASHCARDS_TITLE      = "Flash Cards for {0}";
-        public static readonly string FLASHCARDS_COUNT      = "{0} flash cards!";
 
         // Common Titles for Message Boxes
         public static readonly string TITLE_ATTENTION       = "Attention!";
@@ -60,7 +59,7 @@ namespace FlashCards
         public static readonly string TITLE_CONFIRM_DELETE  = "Are you sure?";
 
         public static readonly string MSG_SELECT_ANSWER     = "Please select an answer to continue!";
-        public static readonly string MSG_WRONG_ANSWER      = "You guessed the wrong answer! The correct Answer is:\n\n{0}";
+        public static readonly string MSG_WRONG_ANSWER      = "You guessed the wrong answer! The correct Answer is:\r\n\r\n{0}";
 
         public static readonly string MSG_TOOLTIP_RIGHT     = "{0} Right";
         public static readonly string MSG_TOOLTIP_WRONG     = "{0} Wrong";

@@ -133,17 +133,27 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>del $(SolutionDir)\Output\*.exe
-del $(SolutionDir)\Output\*.dll
-del $(SolutionDir)\Output\*.exe.config
-del $(SolutionDir)\Output\*.json
-</PreBuildEvent>
+    <PreBuildEvent Condition="'$(OS)' == 'Windows_NT'">del $(SolutionDir)Output\*.exe
+del $(SolutionDir)Output\*.dll
+del $(SolutionDir)Output\*.exe.config
+del $(SolutionDir)Output\*.json
+    </PreBuildEvent>
+    <PreBuildEvent Condition="'$(OS)' == 'Unix'">rm $(SolutionDir)Output/*.exe
+rm $(SolutionDir)Output/*.dll
+rm $(SolutionDir)Output/*.exe.config
+rm $(SolutionDir)Output/*.json
+    </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy $(TargetPath) $(SolutionDir)Output\
+    <PostBuildEvent Condition="'$(OS)' == 'Windows_NT'">copy $(TargetPath) $(SolutionDir)Output\
 copy $(TargetDir)*.dll $(SolutionDir)Output\
 copy $(TargetPath).config $(SolutionDir)Output\
-copy $(SolutionDir)\data\*.json $(SolutionDir)Output\
-</PostBuildEvent>
+copy $(SolutionDir)data\*.json $(SolutionDir)Output\
+    </PostBuildEvent>
+    <PostBuildEvent Condition="'$(OS)' == 'Unix'">cp $(TargetPath) $(SolutionDir)Output/
+cp $(TargetDir)*.dll $(SolutionDir)Output/
+cp $(TargetPath).config $(SolutionDir)Output/
+cp $(SolutionDir)data/*.json $(SolutionDir)Output/
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -5,7 +5,7 @@ Looking for a digital `FlashCards` that you can run on your computer to learn an
 This is the main window, where you select the topics. The topics are picked up from the data.json file in the assembly folder.
 <br>
 <p align="center"><img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/flashcard.png" /></p>
-This is the `FlashCard` view, where it either randomly shows flash cards or sequentially. You can then guess the answers by selecting right option. It keeps track of how many you got right and how many you got wrong, and how long it took for you to finish it. What are you waiting for? Download the application and start learning new stuff!<br>
+This is the FlashCard view, where it either randomly shows flash cards or sequentially. You can then guess the answers by selecting right option. It keeps track of how many you got right and how many you got wrong, and how long it took for you to finish it. What are you waiting for? Download the application and start learning new stuff!<br>
 <br>
 <p align="center">
 <img src="https://raw.githubusercontent.com/skalavala/FlashCards/master/images/edit_topic.png" />

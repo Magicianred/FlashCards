@@ -192,7 +192,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TopicForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Topic";
             this.Load += new System.EventHandler(this.TopicForm_Load);
             this.groupBox1.ResumeLayout(false);

@@ -90,7 +90,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MyMessageBox";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MyMessageBox";
             this.Load += new System.EventHandler(this.MyMessageBox_Load);
             this.ResumeLayout(false);

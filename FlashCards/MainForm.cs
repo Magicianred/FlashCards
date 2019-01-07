@@ -145,5 +145,15 @@ namespace FlashCards
                 RefreshData();
             }
         }
+
+        private void mnuAbout_Click(object sender, EventArgs e)
+        {
+            new AboutForm().ShowDialog();
+        }
+
+        private void mnuSearch_Click(object sender, EventArgs e)
+        {
+            new SearchForm().ShowDialog();
+        }
     }
 }

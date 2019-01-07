@@ -119,7 +119,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CardForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Flash Card Information";
             this.Load += new System.EventHandler(this.DataForm_Load);
             this.groupBox1.ResumeLayout(false);

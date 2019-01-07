@@ -211,7 +211,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FlashCardForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Flash Card";
             this.Load += new System.EventHandler(this.FlashForm_Load);
             this.statusBar.ResumeLayout(false);

@@ -64,7 +64,7 @@ $ xbuild FlashCards.sln
 $ mono Output/FlashCards.exe
 ```
 
-A BIG thanks to [plavelo](https://github.com/plavelo) for porting this app ??
+A BIG thanks to [plavelo](https://github.com/plavelo) for porting this app.
 <br>
 
 Enjoy
